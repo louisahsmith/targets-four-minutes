@@ -9,8 +9,8 @@ library(targets)
 
 # Set target options:
 tar_option_set(
-  packages = c("dplyr", "ggplot2", "readr") # packages that your targets use
-  # format = "qs", # Optionally set the default storage format. qs is fast.
+  packages = c("dplyr", "ggplot2", "readr"), # packages that your targets use
+  format = "qs", # Optionally set the default storage format. qs is fast.
   #
   # Pipelines that take a long time to run may benefit from
   # optional distributed computing. To use this capability
@@ -40,7 +40,12 @@ tar_option_set(
   #     # Check with your system administrator if you are unsure.
   #     script_lines = "module load R"
   #   )
-  #
+  controller = crew.cluster::crew_controller_slurm(
+    workers = 2,
+    seconds_idle = 120,
+    script_lines = "module load R/4.4.1",
+    slurm_memory_gigabytes_per_cpu = 1
+  )
   # Set other options as needed.
 )
 
@@ -67,8 +72,38 @@ list(
     description = "Regression of ozone vs temp" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
   ),
   tar_target(
+    name = model2,
+    command = fit_model(data),
+    description = "Regression of ozone vs temp" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
+    name = model3,
+    command = fit_model(data),
+    description = "Regression of ozone vs temp" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
+    name = model4,
+    command = fit_model(data),
+    description = "Regression of ozone vs temp" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
     name = plot,
     command = plot_model(model, data),
+    description = "Scatterplot of model & data" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
+    name = plot2,
+    command = plot_model(model2, data),
+    description = "Scatterplot of model & data" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
+    name = plot3,
+    command = plot_model(model3, data),
+    description = "Scatterplot of model & data" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
+  ),
+  tar_target(
+    name = plot4,
+    command = plot_model(model4, data),
     description = "Scatterplot of model & data" # requires development targets >= 1.5.0.9001: remotes::install_github("ropensci/targets")
   )
 )
