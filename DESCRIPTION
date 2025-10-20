@@ -1,0 +1,5 @@
+Package: targets-practice
+Title: targets-practice
+Version: 0.0.0
+Imports:
+  qs2
