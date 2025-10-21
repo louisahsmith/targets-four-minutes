@@ -43,8 +43,10 @@ tar_option_set(
   controller = crew.cluster::crew_controller_slurm(
     workers = 2,
     seconds_idle = 120,
-    script_lines = "module load R/4.4.1",
-    slurm_memory_gigabytes_per_cpu = 1
+    options_cluster = crew.cluster::crew_options_slurm(
+      script_lines = "module load R/4.4.1",
+      memory_gigabytes_per_cpu = 1
+    ),
   )
   # Set other options as needed.
 )
