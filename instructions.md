@@ -1,0 +1,11 @@
+- use `renv()` (if there are packages that aren't recognized `qs2`, put in DESCRIPTION)
+- ssh into Explorer
+- `cd /projects/{lab}`
+- `git clone` if not already there
+- `cd` into repo (pull if it was already there)
+- start a job: `srun -N 1 -n 1 -p short --pty bash`
+- `module load R` (or specific version)
+- `R` to start R
+- `renv::restore()`
+- `targets::tar_make()`
+- can check on progress with `squeue -u $USER`
