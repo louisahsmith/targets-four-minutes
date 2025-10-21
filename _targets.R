@@ -49,7 +49,8 @@ tar_option_set(
       memory_gigabytes_per_cpu = 1,
       cpus_per_task = 1,
       n_tasks = 1,
-      partition = "short"
+      partition = "debug",
+      time_minutes = 3
       # A node is a single machine in the cluster allocated for computation,
       # while a task is a unit of parallel work required from within the job.
       # Not all programs are optimized to run on more than one node. We
