@@ -43,12 +43,12 @@ tar_option_set(
   controller = crew.cluster::crew_controller_slurm(
     workers = 2,
     options_cluster = crew.cluster::crew_options_slurm(
-      script_lines = "module load R",
+      script_lines = "module load R/4.4.1",
       log_output = "log/",
       log_error = "log/",
       memory_gigabytes_per_cpu = 1,
-      cpus_per_task = 1,
-      n_tasks = 1,
+      # cpus_per_task = 1,
+      # n_tasks = 1,
       partition = "debug",
       time_minutes = 3
       # A node is a single machine in the cluster allocated for computation,
