@@ -45,7 +45,7 @@ tar_option_set(
     options_cluster = crew.cluster::crew_options_slurm(
       script_lines = "module load R",
       log_output = "log/",
-      error_output = "log/",
+      log_error = "log/",
       memory_gigabytes_per_cpu = 1,
       cpus_per_task = 1,
       n_tasks = 1,
